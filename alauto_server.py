@@ -27,7 +27,8 @@ SERVER_PORT  = int(os.environ.get("PORT", 5000))
 # App Setup
 # ─────────────────────────────────────────
 
-app = Flask(__name__, static_folder=".")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__, static_folder=BASE_DIR)
 CORS(app)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -97,7 +98,7 @@ def home():
 
 @app.route("/app")
 def serve_app():
-    return send_from_directory(".", "smart_fan_app.html")
+    return send_from_directory(BASE_DIR, "smart_fan_app.html")
 
 
 @app.route("/status")
