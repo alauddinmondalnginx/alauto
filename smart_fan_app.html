@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ALAUTO — স্মার্ট ফ্যান</title>
-<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<title>ALAUTO — Smart Fan</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#38bdf8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ALAUTO">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0f1e;
@@ -88,7 +93,7 @@
   }
 
   .fan-title {
-    font-family: 'Tiro Bangla', serif;
+    font-family: 'Syne', sans-serif;
     font-size: 1rem;
     color: var(--muted);
     margin-bottom: 8px;
@@ -132,7 +137,7 @@
 
   /* Speed control */
   .speed-label {
-    font-family: 'Tiro Bangla', serif;
+    font-family: 'Syne', sans-serif;
     font-size: 0.9rem;
     color: var(--muted);
     margin-bottom: 10px;
@@ -197,7 +202,7 @@
   .toggle-state.off { color: var(--off); }
 
   .toggle-sub {
-    font-family: 'Tiro Bangla', serif;
+    font-family: 'Syne', sans-serif;
     font-size: 0.8rem;
     color: var(--muted);
   }
@@ -258,7 +263,7 @@
     font-weight: 800;
   }
   .stat-lbl {
-    font-family: 'Tiro Bangla', serif;
+    font-family: 'Syne', sans-serif;
     font-size: 0.78rem;
     color: var(--muted);
   }
@@ -332,7 +337,7 @@
   .sch-row:last-child { border-bottom: none; }
 
   .sch-left { display: flex; flex-direction: column; gap: 3px; flex: 1; }
-  .sch-label { font-family: 'Tiro Bangla', serif; font-size: 0.85rem; }
+  .sch-label { font-family: 'Syne', sans-serif; font-size: 0.85rem; }
 
   .sch-right {
     display: flex;
@@ -450,7 +455,7 @@
     border-radius: 14px;
     padding: 12px 22px;
     font-size: 0.88rem;
-    font-family: 'Tiro Bangla', serif;
+    font-family: 'Syne', sans-serif;
     backdrop-filter: blur(12px);
     transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
     z-index: 100;
@@ -469,8 +474,8 @@
 
 <!-- Main Card -->
 <div class="main-card">
-  <div class="fan-title">বেডরুম</div>
-  <div class="fan-name">সিলিং ফ্যান #১</div>
+  <div class="fan-title">Bedroom</div>
+  <div class="fan-name">Ceiling Fan #1</div>
 
   <div class="fan-icon-wrap">
     <div class="fan-circle">
@@ -487,18 +492,18 @@
     </div>
   </div>
 
-  <div class="speed-label">গতি নির্বাচন করুন</div>
+  <div class="speed-label">Select Speed</div>
   <div class="speed-btns">
-    <button class="speed-btn" onclick="setSpeed(1,this)">ধীর</button>
-    <button class="speed-btn active" onclick="setSpeed(2,this)">মধ্যম</button>
-    <button class="speed-btn" onclick="setSpeed(3,this)">দ্রুত</button>
-    <button class="speed-btn" onclick="setSpeed(4,this)">টার্বো</button>
+    <button class="speed-btn" onclick="setSpeed(1,this)">Slow</button>
+    <button class="speed-btn active" onclick="setSpeed(2,this)">Medium</button>
+    <button class="speed-btn" onclick="setSpeed(3,this)">Fast</button>
+    <button class="speed-btn" onclick="setSpeed(4,this)">Turbo</button>
   </div>
 
   <div class="toggle-wrap">
     <div class="toggle-info">
-      <div class="toggle-state on" id="stateText">চালু আছে ✓</div>
-      <div class="toggle-sub" id="stateSub">মধ্যম গতিতে চলছে</div>
+      <div class="toggle-state on" id="stateText">Running ✓</div>
+      <div class="toggle-sub" id="stateSub">Medium speed</div>
     </div>
     <button class="switch on" id="mainSwitch" onclick="toggleFan()"></button>
   </div>
@@ -509,34 +514,34 @@
   <div class="stat-card">
     <div class="stat-icon">🌡️</div>
     <div class="stat-val" id="tempVal">29°C</div>
-    <div class="stat-lbl">ঘরের তাপমাত্রা</div>
+    <div class="stat-lbl">Room Temperature</div>
   </div>
   <div class="stat-card">
     <div class="stat-icon">⚡</div>
     <div class="stat-val" id="wattVal">45W</div>
-    <div class="stat-lbl">বিদ্যুৎ ব্যবহার</div>
+    <div class="stat-lbl">Power Usage</div>
   </div>
   <div class="stat-card">
     <div class="stat-icon">⏱️</div>
     <div class="stat-val" id="uptimeVal">2h 14m</div>
-    <div class="stat-lbl">চলার সময়</div>
+    <div class="stat-lbl">Running Time</div>
   </div>
   <div class="stat-card">
     <div class="stat-icon">💰</div>
     <div class="stat-val" id="costVal">₹0.18</div>
-    <div class="stat-lbl">আজকের খরচ</div>
+    <div class="stat-lbl">Today's Cost</div>
   </div>
 </div>
 
 <!-- Schedule -->
 <div class="schedule-card">
-  <div class="sec-title">⏰ শিডিউল</div>
+  <div class="sec-title">⏰ Schedule</div>
 
   <!-- Fan ON time -->
   <div class="sch-row">
     <div class="sch-left">
-      <div class="sch-label">ফ্যান চালু হবে</div>
-      <div class="sch-summary" id="onSummary">রাত ১০:০০ তে চালু হবে</div>
+      <div class="sch-label">Fan turns ON</div>
+      <div class="sch-summary" id="onSummary">Turns on at 10:00 PM</div>
     </div>
     <div class="sch-right">
       <select class="time-select" id="onHour" onchange="updateSchedule()"></select>
@@ -552,8 +557,8 @@
   <!-- Fan OFF time -->
   <div class="sch-row">
     <div class="sch-left">
-      <div class="sch-label">ফ্যান বন্ধ হবে</div>
-      <div class="sch-summary" id="offSummary">সকাল ৬:০০ তে বন্ধ হবে</div>
+      <div class="sch-label">Fan turns OFF</div>
+      <div class="sch-summary" id="offSummary">Turns off at 6:00 AM</div>
     </div>
     <div class="sch-right">
       <select class="time-select" id="offHour" onchange="updateSchedule()"></select>
@@ -569,8 +574,8 @@
   <!-- Auto Temp Mode -->
   <div class="sch-row">
     <div class="sch-left">
-      <div class="sch-label">অটো তাপমাত্রা মোড</div>
-      <div class="sch-summary" id="tempSummary">৩০°C এর বেশি হলে চালু হবে</div>
+      <div class="sch-label">Auto Temperature Mode</div>
+      <div class="sch-summary" id="tempSummary">Turns on above 30°C</div>
     </div>
     <div class="sch-right">
       <select class="temp-select" id="tempThreshold" onchange="updateTempMode()">
@@ -596,7 +601,7 @@
   <div class="server-icon">🖥️</div>
   <div class="server-info">
     <div class="server-title">Python Server</div>
-    <div class="server-url">http://192.168.1.190:5000</div>
+    <div class="server-url">https://alauto.onrender.com</div>
   </div>
   <div class="conn-badge demo" id="connBadge">Demo</div>
 </div>
@@ -607,7 +612,7 @@
   let fanOn = true;
   let currentSpeed = 2;
   const speedWatts = [0, 28, 45, 65, 85];
-  const speedNames = ['', 'ধীর গতিতে চলছে', 'মধ্যম গতিতে চলছে', 'দ্রুত গতিতে চলছে', 'টার্বো মোডে চলছে'];
+  const speedNames = ['', 'Running slow', 'Running medium', 'Running fast', 'Turbo mode'];
   const speedAnims = ['', '3s', '1.8s', '1s', '0.5s'];
   let startTime = Date.now() - 134 * 60 * 1000;
   let totalCost = 0;
@@ -631,24 +636,24 @@
     stateText.classList.toggle('off', !fanOn);
 
     if (fanOn) {
-      stateText.textContent = 'চালু আছে ✓';
+      stateText.textContent = 'Running ✓';
       stateSub.textContent = speedNames[currentSpeed];
       fanSvg.classList.add('spinning');
       fanSvg.style.animationDuration = speedAnims[currentSpeed];
-      showNotif('✅ ফ্যান চালু হলো!');
+      showNotif('✅ Fan turned ON!');
       startTime = Date.now();
     } else {
-      stateText.textContent = 'বন্ধ আছে ✗';
-      stateSub.textContent = 'ফ্যান বন্ধ';
+      stateText.textContent = 'Stopped ✗';
+      stateSub.textContent = 'Fan is off';
       fanSvg.classList.remove('spinning');
-      showNotif('🔴 ফ্যান বন্ধ হলো!');
+      showNotif('🔴 Fan turned OFF!');
     }
     document.getElementById('wattVal').textContent = fanOn ? speedWatts[currentSpeed] + 'W' : '0W';
     sendToServer(fanOn ? 'on' : 'off');
   }
 
   function setSpeed(s, btn) {
-    if (!fanOn) { showNotif('⚠️ আগে ফ্যান চালু করুন!'); return; }
+    if (!fanOn) { showNotif('⚠️ Please turn on the fan first!'); return; }
     currentSpeed = s;
     document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -656,7 +661,7 @@
     fanSvg.style.animationDuration = speedAnims[s];
     document.getElementById('stateSub').textContent = speedNames[s];
     document.getElementById('wattVal').textContent = speedWatts[s] + 'W';
-    showNotif('🔄 গতি পরিবর্তন হলো: ' + btn.textContent);
+    showNotif('🔄 Speed changed: ' + btn.textContent);
     sendToServer('speed/' + s);
   }
 
@@ -664,7 +669,7 @@
     btn.classList.toggle('on');
   }
 
-  const SERVER = 'http://192.168.1.190:5000';
+  const SERVER = 'https://alauto.onrender.com';
   let serverConnected = false;
 
   async function sendToServer(action) {
@@ -716,7 +721,7 @@
           sw.classList.toggle('on', fanOn);
           stateText.classList.toggle('on', fanOn);
           stateText.classList.toggle('off', !fanOn);
-          stateText.textContent = fanOn ? 'চালু আছে ✓' : 'বন্ধ আছে ✗';
+          stateText.textContent = fanOn ? 'Running ✓' : 'Stopped ✗';
           fanOn ? fanSvg.classList.add('spinning') : fanSvg.classList.remove('spinning');
         }
       }
@@ -803,17 +808,17 @@
     const offH = document.getElementById('offHour').value;
     const offM = document.getElementById('offMin').value;
     const offAP = document.getElementById('offAmpm').value;
-    const apBn = {AM: 'সকাল', PM: 'রাত'};
-    document.getElementById('onSummary').textContent = `${apBn[onAP]} ${onH}:${onM} তে চালু হবে`;
-    document.getElementById('offSummary').textContent = `${apBn[offAP]} ${offH}:${offM} তে বন্ধ হবে`;
-    showNotif('📅 শিডিউল সেভ হলো!');
+    const apEn = {AM: 'AM', PM: 'PM'};
+    document.getElementById('onSummary').textContent = `Turns on at ${onH}:${onM} ${apEn[onAP]}`;
+    document.getElementById('offSummary').textContent = `Turns off at ${offH}:${offM} ${apEn[offAP]}`;
+    showNotif('📅 Schedule saved!');
     saveScheduleToServer();
   }
 
   function updateTempMode() {
     const t = document.getElementById('tempThreshold').value;
-    document.getElementById('tempSummary').textContent = `${t}°C এর বেশি হলে চালু হবে`;
-    showNotif(`🌡️ তাপমাত্রা সীমা: ${t}°C সেট হলো`);
+    document.getElementById('tempSummary').textContent = `Turns on above ${t}°C`;
+    showNotif(`🌡️ Temp threshold set: ${t}°C`);
     saveScheduleToServer();
   }
 
@@ -837,6 +842,13 @@
     const t = (28 + Math.random() * 3).toFixed(1);
     document.getElementById('tempVal').textContent = t + '°C';
   }, 8000);
+
+  // PWA Service Worker Register
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('ALAUTO PWA: Service Worker ready ✅'))
+      .catch(e => console.log('SW Error:', e));
+  }
 
   // Init
   document.getElementById('fanSvg').classList.add('spinning');
